@@ -22,6 +22,7 @@ class GossipsController < ApplicationController
 		# On utilise permit là encore pour des questions de sécurité : seul le paramètre en question sera recherché. 
 		# Dans ce cas, on utilse find_by car la fonction permet d'indiquer ce que l'on recherche suivi de la valeur
 		@g = Gossip.find_by(params.permit(:id))
+		@c = Comment.new
 	end
 
 	def edit
