@@ -1,0 +1,29 @@
+<h3> Gossips index </h3>
+<br/>
+<div>
+	<% unless @list_gossips == nil %>
+		<table class="table table-striped">
+		  <thead>
+		    <tr>
+		      <th scope="col">Gossip</th>
+		      <th scope="col">Action</th>
+		    </tr>
+		  </thead>
+
+
+		  <tbody>
+			<% @list_gossips.each do |g| %> 
+			<tr>
+		      <td><%=g.content%></td>
+		      <td><a href=<%= gossip_path(g.id) %> class="btn btn-primary" role="button">Show this gossip</a></td>
+		    </tr>
+		    <% end%>
+		  </tbody>
+		</table>
+		<p> You can create a new gossip <a href=<%= new_gossip_path %>>here</a>
+
+	<% else %>
+		<p> There is no gossip. But you can create one <a href=<%= new_gossip_path %>>here</a>
+	<% end %> 
+
+</div>

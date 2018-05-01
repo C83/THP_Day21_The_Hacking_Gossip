@@ -1,0 +1,4 @@
+<h3> User's page</h3>
+<p> The name : <%= @g.anonymous_author %></p> 
+<p> The gossip : <%= @g.content %> </p>
+<a href=<%= edit_gossip_path(@g.id) %> class="btn btn-primary" role="button">Edit</a>
