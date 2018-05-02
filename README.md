@@ -1,6 +1,6 @@
 # README
 
-## Movie Database
+## The Hacking Gossip
 
 We had to create a platform so that all the mousetons could come and write gossips, edit them and even destroy them all anonymously. <br/>
 
