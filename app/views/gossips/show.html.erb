@@ -1,16 +1,35 @@
-<h1> User's page</h1>
-<p> The name : <%= @g.anonymous_author %></p> 
-<p> The gossip : <%= @g.content %> </p>
-<p><a href=<%= edit_gossip_path(@g.id) %> class="btn btn-primary" role="button">Edit</a></p>
+<h1> Gossip's page</h1>
 
-<p> Comments : </p>
-<% unless @g.comments.count == 0
+<div class="card bg-light mb-3" style="max-width: 27rem;">
+  <div class="card-header">Gossip</div>
+  <div class="card-body">
+    <p class="card-text"><%= @g.content %></p>
+  </div>
+  <div class="card-footer">
+    <a href=<%= edit_gossip_path(@g.id) %> class="card-link">Edit</a>
+    <a href=<%= gossips_path(@g.id) %> class="card-link">Return to index of gossips</a>
+  </div>
+</div><br/>
+
+<!-- On affiche la partie commentaire que s'il existe déjà des commentaires. Si non, on propose directement de créer un commentaire  -->
+<% unless @g.comments.count == 0 %>
+<h3> Comments : </h3>
+	<% # Le compteur i va permettre d'afficher un semblant d'ordre dans les commentaires
 	i = 0
 	@g.comments.each do |c| 
 		i += 1%>
-	<p> Comments <%=i%> : <br/>
-		<%= c.body %> <br/>
+	<div class="card" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card_title"> Comments <%=i%> : </h5>
+			<p class="card_text"><%= c.body %></p>
+			<a class="card-link" href=<%= edit_comment_path(c.id) %> class="btn btn-primary" role="button">Edit</a>
+		</div>
+	</div>
 	<% end 
-	end%>
-<p> Ajouter un commentaire : </p>
+	end%><br/>
+
+<h3> Ajouter un commentaire : </h3>
+<!-- On appelle le partiels pour créer un formulaire -->
 <%= render 'comments/form' %>
+
+

@@ -1,21 +1,25 @@
-<h3> Gossips index </h3>
+<h1> Gossips index </h1>
 <br/>
 <div>
-	<% unless @list_gossips == nil %>
+	<!-- S'il n'y a pas encore de gossip, le tableau n'est pas affiché -->
+	<% unless @list_gossips.count == 0 %>
 		<table class="table table-striped">
 		  <thead>
 		    <tr>
 		      <th scope="col">Gossip</th>
 		      <th scope="col">Action</th>
+		      <th scope="col"># comments</th>
 		    </tr>
 		  </thead>
 
 
 		  <tbody>
+		  	<!-- Pour chaque gossip, on crée la ligne avec le contenu, le bouton edit et le nombre de commentaire -->
 			<% @list_gossips.each do |g| %> 
 			<tr>
 		      <td><%=g.content%></td>
 		      <td><a href=<%= gossip_path(g.id) %> class="btn btn-primary" role="button">Show</a></td>
+		      <td><%=g.comments.count%></td>
 		    </tr>
 		    <% end%>
 		  </tbody>

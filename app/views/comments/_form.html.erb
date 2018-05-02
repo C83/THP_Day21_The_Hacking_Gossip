@@ -1,3 +1,4 @@
+<!-- Formulaire pour créer ou modifier un commentaire -->
 <%= form_for @c do |f| %>
 	<div class="form-group">
 		<label> Author : </label>
@@ -7,7 +8,8 @@
 		<label> Content : </label>
 		<%= f.text_field :body %>
 	</div>
-        <%= hidden_field_tag 'gossip_id', @g.id  %>
+	<!-- Rajouter afin de connaître l'id du gossip en question et le rajouter lors de la création. Inutile en édition de commentaire -->
+    <%= hidden_field_tag 'gossip_id', @g.id  %>
    	<div class="form-group">
 		<button type:"submit" class="btn btn-primary"> Submit </label>
 	</div>

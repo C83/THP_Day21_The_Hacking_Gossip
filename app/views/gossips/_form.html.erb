@@ -1,3 +1,6 @@
+<!-- Formulaire utilisé pour la création et la modification d'un gossip. Il est appelé à partir de render
+	On utilise le helper form_for pour faciliter la création du formulaire. Rails va alors reconnaître 
+	le model de l'objet et va remplir plus rapidemment les différents champs -->
 <%= form_for @g do |f| %>
 	<div class="form-group">
 		<label> Author : </label>

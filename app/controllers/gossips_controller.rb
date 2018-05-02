@@ -1,9 +1,11 @@
 class GossipsController < ApplicationController
 	def new
+		# On instancie un nouveau gossip afin de pouvoir l'utiliser dans le formulaire (il faut lui passer une variable)
 		@g = Gossip.new
 	end
 
 	def index
+		# On récupère la liste des gossips pour l'afficher
 		@list_gossips = Gossip.all
 	end
 
@@ -11,11 +13,7 @@ class GossipsController < ApplicationController
 		# On utilise params.permit afin de sélectionner les arguments que l'on veut utiliser pour la création de notre gossip
 	 	g = Gossip.create(params.require(:gossip).permit(:anonymous_author, :content))
 	  	# On ajoute une redirection une fois le gossip créé
-	  	unless g == nil
-	  		redirect_to gossip_path(g.id)
-	  	# else
-	  	# 	redirect_to show_user_error_create_path
-	  	end
+	  	redirect_to gossip_path(g.id)
 	end
 
 	def show
